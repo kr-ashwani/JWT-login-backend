@@ -44,7 +44,7 @@ async function tokenGeneration(req, res, next) {
     //  have refresh token but no user found
     if (!user) req.sendStatus(403);
 
-    // console.log("culprit", requestedUserRefreshToken);
+    // console.log( requestedUserRefreshToken);
     // React strict mode problem
     // react in strict mode renders twice
     // so in every page refresh components will be rendered twice
@@ -113,7 +113,7 @@ async function tokenGeneration(req, res, next) {
       res.cookie('_auth_token', refreshToken, {
         httpOnly: true,
         secure: true,
-        maxAge: 60 * 1000,
+        maxAge: process.env.REFRESH_TOKEN_EXP_TIME,
         sameSite: 'lax',
       });
 

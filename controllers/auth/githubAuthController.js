@@ -111,7 +111,7 @@ async function githubSignupController(req, res) {
     res.cookie('_auth_token', refreshToken, {
       httpOnly: true,
       secure: true,
-      maxAge: 60 * 1000,
+      maxAge: process.env.REFRESH_TOKEN_EXP_TIME,
       sameSite: 'lax',
     });
 
@@ -189,7 +189,7 @@ async function githubLoginController(req, res) {
     res.cookie('_auth_token', refreshToken, {
       httpOnly: true,
       secure: true,
-      maxAge: 60 * 1000,
+      maxAge: process.env.REFRESH_TOKEN_EXP_TIME,
       sameSite: 'lax',
     });
 
